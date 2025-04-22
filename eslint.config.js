@@ -1,7 +1,6 @@
 import { defineConfig } from 'eslint-define-config'
 
 export default defineConfig({
-  root: true,
   extends: [
     'plugin:vue/vue3-essential',
     'eslint:recommended',

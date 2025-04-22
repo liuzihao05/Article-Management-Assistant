@@ -3,7 +3,6 @@ import { ref } from 'vue'
 import { Plus, Upload } from '@element-plus/icons-vue'
 import { useUserStore } from '@/stores'
 import { userUpdateAvatarService } from '@/api/user'
-import { ElMessage } from 'element-plus' // 新增这行，局部注册
 const userStore = useUserStore()
 const imgUrl = ref(userStore.user.user_pic)
 const uploadRef = ref()
@@ -48,7 +47,11 @@ const onUpdateAvatar = async () => {
       size="large"
       >选择图片</el-button
     >
-    <el-button @click="onUpdateAvatar" type="success" :icon="Upload" size="large"
+    <el-button
+      @click="onUpdateAvatar"
+      type="success"
+      :icon="Upload"
+      size="large"
       >上传头像</el-button
     >
   </page-container>

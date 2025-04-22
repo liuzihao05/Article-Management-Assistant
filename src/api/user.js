@@ -1,4 +1,5 @@
 import request from '@/utils/request'
+import instance from '../utils/request'
 
 // 注册接口
 export const userRegisterService = ({ username, password, repassword }) =>
@@ -15,6 +16,7 @@ export const userGetInfoService = () => request.get('/my/userinfo')
 export const userUpdateInfoService = ({ id, nickname, email }) =>
   request.put('/my/userinfo', { id, nickname, email })
 
+// 更新用户头像
 // 更新用户头像
 export const userUpdateAvatarService = (avatar) => request.patch('/my/update/avatar', { avatar })
 

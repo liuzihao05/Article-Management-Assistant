@@ -39,10 +39,12 @@
     </el-aside>
     <el-container>
       <el-header>
-        <div>程序员：<strong>liu</strong></div>
-        <el-dropdown placement="bottom-end">
+        <div>
+          程序员：<strong>{{ userStore.user.username }}【{{ userStore.user.nickname }}】</strong>
+        </div>
+        <el-dropdown placement="bottom-end" @command="handleCommand">
           <span class="el-dropdown__box">
-            <el-avatar :src="avatar" />
+            <el-avatar :src="userStore.user?.user_pic ? userStore.user.user_pic : avatar" />
             <el-icon><CaretBottom /></el-icon>
           </span>
           <template #dropdown>
@@ -72,10 +74,39 @@ import {
   Crop,
   EditPen,
   SwitchButton,
-  CaretBottom,
+  CaretBottom
 } from '@element-plus/icons-vue'
 import avatar from '@/assets/default.png'
+import { useUserStore } from '@/stores'
+import { onMounted } from 'vue'
+import { useRouter } from 'vue-router'
+const userStore = useUserStore()
+const router = useRouter()
+
+onMounted(() => {
+  userStore.getUser()
+})
+
+const handleCommand = async (key) => {
+  if (key === 'logout') {
+    // 退出操作
+    await ElMessageBox.confirm('你确认要进行退出么', '温馨提示', {
+      type: 'warning',
+      confirmButtonText: '确认',
+      cancelButtonText: '取消'
+    })
+
+    // 清除本地的数据 (token + user信息)
+    userStore.removeToken()
+    userStore.setUser({})
+    router.push('/login')
+  } else {
+    // 跳转操作
+    router.push(`/user/${key}`)
+  }
+}
 </script>
+
 <style lang="scss" scoped>
 .layout-container {
   height: 100vh;

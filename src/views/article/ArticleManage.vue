@@ -5,8 +5,6 @@ import ChannelSelect from './components/ChannelSelect.vue'
 import ArticleEdit from './components/ArticleEdit.vue'
 import { artGetListService, artDelService } from '@/api/article.js'
 import { formatTime } from '@/utils/format.js'
-import { ElMessageBox } from 'element-plus' // 新增这行，局部注册
-import { ElMessage } from 'element-plus' // 新增这行，局部注册
 const articleList = ref([]) // 文章列表
 const total = ref(0) // 总条数
 const loading = ref(false) // loading状态
@@ -16,7 +14,7 @@ const params = ref({
   pagenum: 1, // 当前页
   pagesize: 5, // 当前生效的每页条数
   cate_id: '',
-  state: '',
+  state: ''
 })
 
 // 基于params参数，获取文章列表
@@ -78,7 +76,7 @@ const onDeleteArticle = async (row) => {
   await ElMessageBox.confirm('此操作将永久删除该文件, 是否继续?', '提示', {
     confirmButtonText: '确定',
     cancelButtonText: '取消',
-    type: 'warning',
+    type: 'warning'
   })
   await artDelService(row.id)
   ElMessage.success('删除成功')

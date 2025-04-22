@@ -1,12 +1,5 @@
-// 从 vue-router 库中导入 createRouter 和 createWebHistory 函数
-// createRouter 用于创建路由实例，createWebHistory 用于创建 HTML5 History 模式的路由历史
 import { createRouter, createWebHistory } from 'vue-router'
-// 从 @/stores 目录导入 useUserStore 函数，该函数用于获取用户状态管理的存储实例
 import { useUserStore } from '@/stores'
-
-// createRouter 创建路由实例，===> new VueRouter()
-// 1. history模式: createWebHistory()   http://xxx/user
-// 2. hash模式: createWebHashHistory()  http://xxx/#/user
 
 // vite 的配置 import.meta.env.BASE_URL 是路由的基准地址，默认是 ’/‘
 // https://vitejs.dev/guide/build.html#public-base-path
@@ -14,30 +7,18 @@ import { useUserStore } from '@/stores'
 // 如果将来你部署的域名路径是：http://xxx/my-path/user
 // vite.config.ts  添加配置  base: my-path，路由这就会加上 my-path 前缀了
 // createRouter 创建路由实例
-// 配置 history 模式
-// 1. history模式：createWebHistory     地址栏不带 #
-// 2. hash模式：   createWebHashHistory 地址栏带 #
-// console.log(import.meta.env.DEV)
 
-// vite 中的环境变量 import.meta.env.BASE_URL  就是 vite.config.js 中的 base 配置项
-// 创建路由实例，并传入配置对象
 const router = createRouter({
-  // 使用 createWebHistory 创建 HTML5 History 模式的路由历史，并传入基础路径
   history: createWebHistory(import.meta.env.BASE_URL),
-  // 定义路由规则数组，每个规则是一个对象，包含路径和对应的组件
   routes: [
     // 定义登录页面的路由规则
     {
-      // 路径为 /login
       path: '/login',
-      // 使用动态导入的方式加载 @/views/login/LoginPage.vue 组件
       component: () => import('@/views/login/LoginPage.vue'),
     },
     // 定义根路径的路由规则
     {
-      // 路径为 /
       path: '/',
-      // 使用动态导入的方式加载 @/views/layout/LayoutContainer.vue 组件
       component: () => import('@/views/layout/LayoutContainer.vue'),
       // 当访问根路径时，自动重定向到 /article/manage 路径
       redirect: '/article/manage',
@@ -45,37 +26,27 @@ const router = createRouter({
       children: [
         // 文章管理页面的路由规则
         {
-          // 路径为 /article/manage
           path: '/article/manage',
-          // 使用动态导入的方式加载 @/views/article/ArticleManage.vue 组件
           component: () => import('@/views/article/ArticleManage.vue'),
         },
         // 文章频道页面的路由规则
         {
-          // 路径为 /article/channel
           path: '/article/channel',
-          // 使用动态导入的方式加载 @/views/article/ArticleChannel.vue 组件
           component: () => import('@/views/article/ArticleChannel.vue'),
         },
         // 用户个人资料页面的路由规则
         {
-          // 路径为 /user/profile
           path: '/user/profile',
-          // 使用动态导入的方式加载 @/views/user/UserProfile.vue 组件
           component: () => import('@/views/user/UserProfile.vue'),
         },
         // 用户头像页面的路由规则
         {
-          // 路径为 /user/avatar
           path: '/user/avatar',
-          // 使用动态导入的方式加载 @/views/user/UserAvatar.vue 组件
           component: () => import('@/views/user/UserAvatar.vue'),
         },
         // 用户密码修改页面的路由规则
         {
-          // 路径为 /user/password
           path: '/user/password',
-          // 使用动态导入的方式加载 @/views/user/UserPassword.vue 组件
           component: () => import('@/views/user/UserPassword.vue'),
         },
       ],

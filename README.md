@@ -1,34 +1,36 @@
-# Vue3-big-event-admin
+# 文章管理助手
 
-This template should help get you started developing with Vue 3 in Vite.
+此模板应该可以帮助您开始在 Vite 中使用 Vue 3 进行开发。
 
-## Recommended IDE Setup
+## 推荐的 IDE 设置
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+[VSCode](https://code.visualstudio.com/) + Vue-Official
 
-## Customize configuration
+<img src="https://github.com/user-attachments/assets/f10ad7d3-4e31-49ee-9558-be2c6856d36a" alt="Snipaste_2025-04-10_16-56-51" width="50%">
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+## 自定义配置
 
-## Project Setup
+参见 [Vite Configuration Reference](https://vite.dev/config/).
+
+## 项目设置
 
 ```sh
 pnpm install
 ```
 
-### Compile and Hot-Reload for Development
+### 用于开发的 Compile 和 Hot-Reload
 
 ```sh
 pnpm dev
 ```
 
-### Compile and Minify for Production
+### 编译和缩小用于生产
 
 ```sh
 pnpm build
 ```
 
-### Lint with [ESLint](https://eslint.org/)
+### 使用  [ESLint](https://eslint.org/)的 Lint（弃用）
 
 ```sh
 pnpm lint
